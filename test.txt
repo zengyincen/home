@@ -1,1 +1,374 @@
+<!DOCTYPE html>
+<!-- 文档类型声明，表示这是一个 HTML5 文档 -->
+<html class="mrdeer.us.kg">
+<!-- HTML 根元素，带有自定义类 "mrdeer.us.kg" -->
 
+<head class="mrdeer.us.kg">
+    <!-- 包含 HTML 文档的元信息 -->
+
+    <meta charset="utf-8">
+    <!-- 指定文档的字符编码 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 确保在不同版本的 Internet Explorer 中兼容 -->
+    <title>
+        Deer </title>
+        <!-- 网页标题，显示在浏览器标签页上 -->
+    <link rel="icon" href="./static/img/17home.png">
+    <!-- 链接到网站图标（favicon），显示在浏览器标签页上 -->
+    <meta name="description" content="不学无术的坏孩子.....">
+    <!-- 网页的元描述，供搜索引擎使用 -->
+    <meta name="keywords" content="deer,鹿人,Deer,鹿人主页,Deer引导页,mrdeer">
+    <!-- 网页的元关键词，供搜索引擎使用 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- 配置视口，实现响应式设计 -->
+    <link rel="stylesheet" href="./static/css/style.css">
+    <!-- 链接到主样式表 -->
+    <link rel="stylesheet" href="./static/css/root.css">
+    <!-- 链接到根样式表 -->
+    <link rel="stylesheet" type="text/css" href="./static/css/materialdesignicons.min.css">
+    <!-- 链接到 Material Design 图标样式表 -->
+</head>
+
+<body>
+    <!-- 网页可见内容在此处 -->
+    <div id="zyyo-loading">
+        <!-- 加载页面时的加载动画容器 -->
+        <div id="zyyo-loading-center">
+            <!-- 加载动画的中心部分 -->
+        </div>
+    </div>
+    <div class="zyyo-filter"></div>
+    <!-- 页面滤镜覆盖层 -->
+    <div class="zyyo-main">
+        <!-- 页面主要内容容器 -->
+        <div class="zyyo-left">
+            <!-- 页面左侧内容 -->
+            <div class="left-div left-des">
+                <!-- 左侧描述部分 -->
+                <div class="left-des-item"><i class="mdi mdi-information-outline"></i>China-Henan
+                </div>
+                <!-- 位置信息 -->
+                <div class="left-des-item"><i class="mdi mdi-school"></i>Sias</div>
+                 <!-- 学校信息 -->
+            </div>
+            <div class="left-div left-tag">
+                <!-- 左侧标签部分 -->
+                <div class="left-tag-item">宅
+                </div>
+                <!-- 标签项 -->
+                <div class="left-tag-item">垃圾佬
+                </div>
+                <!-- 标签项 -->
+                <div class="left-tag-item">网页
+                </div>
+                <!-- 标签项 -->
+                <div class="left-tag-item">linux
+                </div>
+                <!-- 标签项 -->
+                <div class="left-tag-item">G
+                </div>
+                <!-- 标签项 -->
+                <div class="left-tag-item">混吃等死</div>
+                <!-- 标签项 -->
+            </div>
+            <div class="left-div left-time">
+                <!-- 左侧时间线部分 -->
+                <ul id="line">
+                    <!-- 时间线无序列表 -->
+                    <li>
+                        <div class="focus"></div>
+                        <!-- 时间线焦点 -->
+                        <div>敬请期待
+                        </div>
+                         <!-- 时间线事件描述 -->
+                        <div>2024.1</div>
+                         <!-- 时间线事件日期 -->
+                    </li>
+                    <li>
+                        <div class="focus"></div>
+                        <div>注册域名mrdeer.xyz
+                        </div>
+                        <div>2023.8</div>
+                    </li>
+                    <li>
+                        <div class="focus"></div>
+                        <div>注册域名mrdeer.top
+                        </div>
+                        <div>2023.3</div>
+                    </li>
+                    <li>
+                        <div class="focus"></div>
+                        <div>...
+                        </div>
+                        <div>2021.2</div>
+                    </li>
+                    <li>
+                        <div class="focus"></div>
+                        <div>...
+                        </div>
+                        <div>...</div>
+                    </li>
+                    <li>
+                        <div class="focus"></div>
+                        <div>...</div>
+                        <div>2018.1</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="zyyo-right">
+            <!-- 页面右侧内容 -->
+            <header>
+                <!-- 页头部分 -->
+                <div class="description">👦 <span class="purpleText">Hello,</span> I'm Mrdeer
+                </div>
+                <!-- 问候语 -->
+                <div class="description">📝 The only way to do <span class="purpleText textBackground">great</span> is
+                    to <span class="purpleText textBackground">love</span> what you do. </div>
+                    <!-- 座右铭 -->
+
+                <div class="iconContainer">
+                    <!-- 图标链接容器 -->
+                    <a class="iconItem" onclick="" href="https://github.com/deerwan">
+                        <!-- 链接到 GitHub 个人资料 -->
+                        <i class="mdi mdi-github"></i>
+                        <!-- GitHub 图标 -->
+                        <div class="iconTip">Github</div>
+                        <!-- GitHub 图标提示 -->
+                    </a><a class="iconItem" onclick="" href="mailto:739914756@qq.com">
+                        <!-- 链接到邮箱 -->
+                        <i class="mdi mdi-mail"></i>
+                        <!-- 邮箱图标 -->
+                        <div class="iconTip">Mail</div>
+                        <!-- 邮箱图标提示 -->
+                    </a><a class="iconItem" onclick="pop('./static/img/wx.jpg')" href="javascript:void(0)">
+                        <!-- 微信弹窗链接（使用 JavaScript 函数 pop） -->
+                        <i class="mdi mdi-wechat"></i>
+                        <!-- 微信图标 -->
+                        <div class="iconTip">wechat</div>
+                        <!-- 微信图标提示 -->
+                    </a><a class="iconItem" onclick="pop('./static/img/wxzsm.jpg')" href="javascript:void(0)">
+                        <!-- 赞助弹窗链接 -->
+                        <i class="mdi mdi-thumb-up"></i>
+                        <!-- 赞助图标 -->
+                        <div class="iconTip">赞助</div>
+                        <!-- 赞助图标提示 -->
+                    </a><a class="iconItem" onclick="pop('./static/img/qq.jpg')" href="javascript:void(0)">
+                        <!-- QQ 群弹窗链接 -->
+                        <i class="mdi mdi-qqchat"></i>
+                        <!-- QQ 群图标 -->
+                        <div class="iconTip">QQ群</div>
+                        <!-- QQ 群图标提示 -->
+                    </a> <a class="switch" href="javascript:void(0)">
+                        <!-- 主题切换开关 -->
+                        <div class="onoffswitch">
+                            <!-- 开关容器 -->
+                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
+                                checked>
+                                 <!-- 开关复选框 -->
+                            <label class="onoffswitch-label" for="myonoffswitch">
+                                <!-- 开关标签 -->
+                                <span class="onoffswitch-inner"></span>
+                                 <!-- 开关内部 -->
+                                <span class="onoffswitch-switch"></span>
+                                  <!-- 开关旋钮 -->
+                            </label>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="tanChiShe">
+                     <!-- 贪吃蛇动画容器 -->
+                    <img id="tanChiShe" src="./static/svg/snake-Light.svg" alt="">
+                    <!-- 贪吃蛇动画图片 -->
+                </div>
+            </header>
+
+            <content>
+                 <!-- 主要内容区域 -->
+                <div class="title"><i class=" mdi mdi-chart-bubble"></i>site </div>
+                <!-- 网站链接标题 -->
+                <div class="projectList"><a class="projectItem a" target="_blank" href="https://typecho.mrdeer.top">
+                    <!-- 博客项目链接 -->
+                        <div class="projectItemLeft">
+                            <!-- 项目左侧部分 -->
+                            <h1>博客</h1>
+                            <!-- 项目标题 -->
+                            <p>随缘更新</p>
+                            <!-- 项目描述 -->
+                        </div>
+                        <div class="projectItemRight">
+                            <!-- 项目右侧部分 -->
+                            <img src="./static/img/blog.png" alt="">
+                             <!-- 项目图片 -->
+                        </div>
+                    </a><a class="projectItem a" target="_blank" href="https://pro.952780.xyz:4321/">
+                       <!-- 京东车项目链接 -->
+                        <div class="projectItemLeft">
+                            <h1>京东车</h1>
+                            <p>家宽车Pro</p>
+                        </div>
+                        <div class="projectItemRight">
+                            <img src="./static/img/jd.png" alt="">
+                        </div>
+                    </a><a class="projectItem a" target="_blank" href="https://qd.mrdeer.top/">
+                      <!-- 签到框架项目链接 -->
+
+						<div class="projectItemLeft">
+							<h1>签到框架</h1>
+							<p>全自动签到站</p>
+						</div>
+						<div class="projectItemRight">
+							<img src="./static/img/qd.png" alt="">
+						</div>
+						
+											</a><a class="projectItem a" target="_blank" href="https://sunpanel.mrdeer.top/">
+						<!-- sunpanel 项目链接 -->
+						<div class="projectItemLeft">
+							<h1>sunpanel</h1>
+							<p>公共导航页（常用工具）</p>
+						</div>
+						<div class="projectItemRight">
+							<img src="./static/img/sun.png" alt="">
+						</div>
+
+					</a></div>
+				<div class="title"><i class="mdi mdi-monitor"></i>project </div>
+                <!-- 项目链接标题 -->
+				<div class="projectList"><a class="projectItem b" target="_blank"
+						href="https://zhiyou.smzdm.com/member/8735360783/">
+                        <!-- 什么值得买项目链接 -->
+						<div class="projectItemLeft">
+							<h1>smzdm</h1>
+							<p>什么值得买</p>
+						</div>
+						<div class="projectItemRight">
+							<img src="./static/img/smzdm.png" alt="">
+						</div>
+
+					</a><a class="projectItem b" target="_blank" href="https://www.zhihu.com/people/san-san-61-6">
+                       <!-- 知乎项目链接 -->
+						<div class="projectItemLeft">
+							<h1>zhihu</h1>
+							<p>知乎</p>
+						</div>
+						<div class="projectItemRight">
+							<img src="./static/img/zh.png" alt="">
+						</div>
+
+					</a><a class="projectItem b" target="_blank" href="https://space.bilibili.com/31517542?spm_id_from=333.1007.0.0">
+                        <!-- B站项目链接 -->
+						<div class="projectItemLeft">
+							<h1>bilibili</h1>
+							<p>哔哩哔哩</p>
+						</div>
+						<div class="projectItemRight">
+							<img src="./static/img/bilibili.png" alt="">
+						</div>
+
+					</a><a class="projectItem b" target="_blank" href="https://gpt.mrdeer.top">
+                        <!-- GPT 项目链接 -->
+						<div class="projectItemLeft">
+							<h1>GPT</h1>
+							<p>chatgpt next web</p>
+						</div>
+						<div class="projectItemRight">
+							<img src="./static/img/gpt.png" alt="">
+						</div>
+
+					</a></div>
+				<div class="title"><i class="mdi mdi-school"></i>Monitoring panel </div>
+                <!-- 监控面板链接标题 -->
+				<div class="projectList"><a class="projectItem b" target="_blank"
+						href="https://nezha.mrdeer.us.kg/">
+                       <!-- 哪吒面板项目链接 -->
+						<div class="projectItemLeft">
+							<h1>哪吒面板</h1>
+							<p>服务器监控</p>
+						</div>
+						<div class="projectItemRight">
+							<img src="./static/img/mianban.png" alt="">
+						</div>
+						
+
+					</a><a class="projectItem b" target="_blank" href="https://hexo.mrdeer.us.kg/">
+                        <!-- Hexo 博客项目链接 -->
+						<div class="projectItemLeft">
+							<h1>Hexo</h1>
+							<p>静态博客站</p>
+						</div>
+						<div class="projectItemRight">
+							<img src="./static/img/hexo.png" alt="">
+						</div>
+
+					</a><a class="projectItem b" target="_blank" href="https://deerwan.github.io/hugo/">
+                        <!-- Hugo 博客项目链接 -->
+						<div class="projectItemLeft">
+							<h1>Hugo</h1>
+							<p>静态博客站</p>
+						</div>
+						<div class="projectItemRight">
+							<img src="./static/img/hugo.png" alt="">
+						</div>
+
+
+
+					</a><a class="projectItem b" target="_blank" href="https://sun.952780.xyz:4321">
+                        <!-- Sun-Panel 项目链接 -->
+						<div class="projectItemLeft">
+							<h1>Sun-Panel</h1>
+							<p>家宽导航页（自用）</p>
+						</div>
+						<div class="projectItemRight">
+							<img src="./static/img/sun.png" alt="">
+						</div>
+						
+						
+						
+					</a></div>
+				<div class="title">
+					<i class="mdi mdi-vacuum-outline"></i>
+                    <!-- 技能图标  -->
+					skills
+				</div>
+                <!-- 技能标题 -->
+				<div class="skill">
+                    <!-- 技能容器 -->
+					<img id="skillPc" src="./static/svg/skillPc.svg" alt="" srcset="">
+                     <!-- PC 端技能图片 -->
+					<img id="skillWap" src="./static/svg/skillWap.svg" alt="" srcset="">
+                     <!-- 移动端技能图片 -->
+				</div>
+			</content>
+		</div>
+	</div>
+	<footer>
+         <!-- 页脚部分 -->
+		mrdeer © 2024 |
+        <!-- 版权信息 -->
+		<a href="https://mrdeer.us.kg/">
+			鹿人 </a>
+            <!-- 网站链接 -->
+	</footer>
+	<div class="tc">
+        <!-- 弹窗容器 -->
+		<div onclick="" class="tc-main">
+            <!-- 弹窗内容容器 -->
+			<img class="tc-img" src="" alt="" srcset="">
+            <!-- 弹窗图片 -->
+		</div>
+
+	</div>
+</body>
+<script src="./static/js/script.js"> </script>
+<!-- 链接到主 JavaScript 文件 -->
+
+
+
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<!-- 51.la 统计脚本 -->
+<script>LA.init({ id: "KFqltKSkJgQTGD9l", ck: "KFqltKSkJgQTGD9l" })</script>
+<!-- 初始化 51.la 统计 -->
+
+</html>
