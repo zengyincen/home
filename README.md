@@ -6,7 +6,7 @@
 
 ## 📚缘由 
 
-作者灵感源自于 **[xhofe](https://github.com/xhofe/homepage)  ** 和 **[ddiu8081](https://github.com/ddiu8081/ddiu.io)  ** 感谢两位大佬！  
+作者灵感源自于[xhofe](https://github.com/xhofe/homepage)和[ddiu8081](https://github.com/ddiu8081/ddiu.io)感谢两位大佬！  
 
 
 ---
@@ -22,6 +22,9 @@
 
 💻 使用
 
+- ✨cloudflare部署✨
+- Fork此项目，打开[cloudflare](https://dash.cloudflare.com)  根据提示操作
+- ✨本地或服务器部署✨
 - 下载并解压。
 - 主要文件：
 - /static/root.css：主题样式文件。
