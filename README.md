@@ -6,7 +6,7 @@
 
 ## 📚缘由 
 
-原作者灵感源自于 **xhofe** 和 **ddiu** 感谢两位大佬！  
+作者灵感源自于 **[xhofe](https://github.com/xhofe/homepage)  ** 和 **[ddiu8081](https://github.com/ddiu8081/ddiu.io)  ** 感谢两位大佬！  
 
 
 ---
