@@ -1,5 +1,5 @@
 
-**感谢原作者GitHub**：[https://github.com/ZYYO666/homepage](https://github.com/ZYYO666/homepage)  
+**感谢原作者GitHub**：[ZYYO666](https://github.com/ZYYO666/homepage)  
 
 ## ✨✨✨✨✨可以使用cf/pages一键部署无需服务器✨✨✨✨✨ 
 
