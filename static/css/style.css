@@ -640,6 +640,9 @@ footer {
     .deer-left {
         display: none;
     }
+    .logo, .logo img, .index-logo, .index-logo img {
+        display: none;
+    }
 
     .a .projectItemRight {
         display: none;
