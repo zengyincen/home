@@ -1,0 +1,21 @@
+{
+  "name": "Deer个人主页",
+  "short_name": "Deer",
+  "description": "Deer的个人主页，展示个人作品、博客和联系方式",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#121212",
+  "icons": [
+    {
+      "src": "assets/img/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 

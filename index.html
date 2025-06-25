@@ -1,366 +1,436 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html class="952780.xyz">
-<head class="952780.xyz">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hi, I'm Deer</title>
-    <link rel="icon" href="./static/img/rest.png">
-    <meta name="description" content="不学无术.....">
-    <meta name="keywords" content="deer,鹿人,Deer,鹿人主页,Deer引导页,mrdeer">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="./static/css/style.css">
-    <link rel="stylesheet" href="./static/css/root.css">
-    <link rel="stylesheet" type="text/css" href="./static/css/materialdesignicons.min.css">
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Deer个人主页，展示个人作品、博客、生活动态和联系方式">
+    <meta name="keywords" content="Deer, 博客, 个人网站, 开发者, 前端, 程序员">
+    <meta name="author" content="Deer">
+    <meta name="theme-color" content="#121212">
+    <meta name="robots" content="index, follow">
+    <title>Deer - 个人主页</title>
+    
+    <!-- Open Graph / 社交媒体预览 -->
+    <meta property="og:title" content="Deer - 个人主页">
+    <meta property="og:description" content="欢迎访问Deer的个人主页">
+    <meta property="og:image" content="/assets/img/logo.png">
+    <meta property="og:url" content="https://home.952780.xyz">
+    <meta property="og:type" content="website">
+    
+    <!-- 图标和元数据 -->
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/img/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- 资源预加载和预连接 -->
+    <link rel="preconnect" href="https://v1.hitokoto.cn">
+    <link rel="preconnect" href="https://bing.img.run">
+    <link rel="dns-prefetch" href="https://v1.hitokoto.cn">
+    <link rel="dns-prefetch" href="https://bing.img.run">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    
+    <!-- 关键CSS内联（实际项目中可以使用构建工具自动生成） -->
+    <link rel="stylesheet" href="assets/css/style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/style.css"></noscript>
+      <!-- 异步加载字体图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" 
+          media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- Remix Icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" 
+          media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"></noscript>
+    
+    <!-- Waline评论系统CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" 
+          media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css"></noscript>
+    
+    <link rel="preload" href="/assets/fonts/NotoSansSC-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/assets/fonts/NotoSansSC-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 </head>
-
 <body>
-    
-    <div id="deer-loading">
-        
-        <div id="deer-loading-center">
-            
-        </div>
-    </div>
-    <div class="deer-filter"></div>
-    
-    <div class="deer-main">
-        
-        <div class="deer-left">
-            
-            <div class="logo" style="background-image: url(./static/img/rest.png);">
-            </div>
-            <div class="left-div left-des">
-                
-                <div class="left-des-item">
-                    
-                    <i class="mdi mdi-information-outline"></i>China-Henan
-                </div>
-                <div class="left-des-item">
-                    
-                    <i class="mdi mdi-school"></i>Sias
-                </div>
-            </div>
-            <div class="left-div left-tag">
-                
-                <div class="left-tag-item">网瘾
-                </div>
-                
-                <div class="left-tag-item">小学生
-                </div>
-                
-                <div class="left-tag-item">大一
-                </div>
-                
-                <div class="left-tag-item">网页
-                </div>
-                
-                <div class="left-tag-item">linux
-                </div>
-                
-                <div class="left-tag-item">跑者
-                </div>
-                
-                <div class="left-tag-item">前端
-                </div>
-                
-                <div class="left-tag-item">骑行</div>
-                
-            </div>
-            <div class="left-div left-time">
-                
-                <ul id="line">
-                    
-                    <li>
-                        <div class="focus"></div>
-                        
-                        <div>敬请期待
-                        </div>
-                        
-                        <div>2024.1</div>
-                        
-                    </li>
-                    <li>
-                        <div class="focus"></div>
-                        
-                        <div>ICP备案成功
-                        </div>
-                        
-                        <div>2023.8</div>
-                        
-                    </li>
-                    <li>
-                        <div class="focus"></div>
-                        
-                        <div>注册域名mrdeer.top
-                        </div>
-                        
-                        <div>2023.3</div>
-                        
-                    </li>
-                    <li>
-                        <div class="focus"></div>
-                        
-                        <div>出来后洗心革面
-                        </div>
-                        
-                        <div>2021.2</div>
-                        
-                    </li>
-                    <li>
-                        <div class="focus"></div>
-                        
-                        <div>...
-                        </div>
-                        
-                        <div>...</div>
-                        
-                    </li>
-                    <li>
-                        <div class="focus"></div>
-                        
-                        <div>搭建第一个网站</div>
-                        
-                        <div>2018.1</div>
-                        
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="deer-right">
-            
+<div id="global-loading">
+  <div class="spinner"></div>
+  <div class="loading-text">正在加载...</div>
+</div>
+    <main class="container" role="main">
+        <div class="content">
             <header>
-                
-                <div class="index-logo" style="background-image: url(./static/img/logo.png);">
+                <div class="logo">
+                    <img src="assets/img/logo.png" alt="Deer Logo" width="120" height="120" loading="eager">
                 </div>
-                <div class="welcome">
-                    
-                    hello  I' m <span class="gradientText">
-                        deer </span>
-                </div>
-                <div class="description">
-                    
-                    👦 <span class="purpleText">Full Stack</span> Developer
-                </div>
-                <div class="description">
-                    
-                    📝 The only way to do <span class="purpleText textBackground">great</span> is
-                    to <span class="purpleText textBackground">love</span> what you do.
-                </div>
-
-                <div class="iconContainer">
-                    
-                    <a class="iconItem" onclick="" href="https://github.com/deerwan">
-                        
-                        <i class="mdi mdi-github"></i>
-                        
-                        <div class="iconTip">Github</div>
-                        
-                    </a><a class="iconItem" onclick="" href="mailto:739914756@qq.com">
-                        
-                        <i class="mdi mdi-mail"></i>
-                        
-                        <div class="iconTip">Mail</div>
-                        
-                    </a><a class="iconItem" onclick="pop('./static/img/wx.jpg')" href="javascript:void(0)">
-                        
-                        <i class="mdi mdi-wechat"></i>
-                        
-                        <div class="iconTip">wechat</div>
-                        
-                    </a><a class="iconItem" onclick="pop('./static/img/wxzsm.jpg')" href="javascript:void(0)">
-                        
-                        <i class="mdi mdi-thumb-up"></i>
-                        
-                        <div class="iconTip">赞助</div>
-                        
-                    </a><a class="iconItem" onclick="pop('./static/img/qq.jpg')" href="javascript:void(0)">
-                        
-                        <i class="mdi mdi-qqchat"></i>
-                        
-                        <div class="iconTip">QQ群</div>
-                        
-                    </a> <a class="switch" href="javascript:void(0)">
-                        
-                        <div class="onoffswitch">
-                            
-                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
-                                checked>
-                                
-                            <label class="onoffswitch-label" for="myonoffswitch">
-                                
-                                <span class="onoffswitch-inner"></span>
-                                
-                                <span class="onoffswitch-switch"></span>
-                                
-                            </label>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="tanChiShe">
-                    
-                    <img id="tanChiShe" src="./static/svg/snake-Light.svg" alt="">
-                    
-                </div>
+                <p class="subtitle" aria-label="问候语">hi 👋,I'm Deer</p>   <!-- 𝐇𝐢 👋, 𝐈'𝐦 𝐃𝐞𝐞𝐫 -->
             </header>
-
-            <content>
                 
-                <div class="title">
-                    
-                    <i class=" mdi mdi-chart-bubble"></i><P>Project
-                </div>
-                <div class="projectList">
-                    <a class="projectItem a" target="_blank" href="https://952780.xyz/">
-                        <div class="projectItemLeft">
-                            <h1>HOME</h1>
-                            <p>HOME</p>
-                        </div>
-                        <div class="projectItemRight">
-                            <img src="./static/img/i1.png" alt="">
-                        </div>
-                    </a><a class="projectItem a" target="_blank" href="https://952780.xyz/">
-                        <div class="projectItemLeft">
-                            <h1>HOME</h1>
-                            <p>HOME</p>
-                        </div>
-                        <div class="projectItemRight">
-                            <img src="./static/img/i2.png" alt="">
-                        </div>
-                    </a><a class="projectItem a" target="_blank" href="https://952780.xyz/">
-                        <div class="projectItemLeft">
-                            <h1>HOME</h1>
-                            <p>HOME</p>
-                        </div>
-                        <div class="projectItemRight">
-                            <img src="./static/img/i3.png" alt="">
-                        </div>
-                    </a><a class="projectItem a" target="_blank" href="https://952780.xyz/">
-                        <div class="projectItemLeft">
-                            <h1>HOME</h1>
-                            <p>HOME</p>
-                        </div>
-                        <div class="projectItemRight">
-                            <img src="./static/img/i4.png" alt="">
-                        </div>
-                    </a>
-                </div>
-                <div class="title">
-                    
-                    <i class="mdi mdi-monitor"></i>Socializing
-                </div>
-                <div class="projectList">
-                    <a class="projectItem b" target="_blank" href="https://zhiyou.smzdm.com/member/8735360783/">
-                        <div class="projectItemLeft">
-                            <h1>smzdm</h1>
-                            <p>什么值得买</p>
-                        </div>
-                        <div class="projectItemRight">
-                            <img src="./static/img/smzdm.png" alt="">
-                        </div>
-                    </a><a class="projectItem b" target="_blank" href="https://www.zhihu.com/people/san-san-61-6">
-                        <div class="projectItemLeft">
-                            <h1>zhihu</h1>
-                            <p>知乎</p>
-                        </div>
-                        <div class="projectItemRight">
-                            <img src="./static/img/zh.png" alt="">
-                        </div>
-                    </a><a class="projectItem b" target="_blank" href="https://space.bilibili.com/31517542?spm_id_from=333.1007.0.0">
-                        <div class="projectItemLeft">
-                            <h1>bilibili</h1>
-                            <p>哔哩哔哩</p>
-                        </div>
-                        <div class="projectItemRight">
-                            <img src="./static/img/bilibili.png" alt="">
-                        </div>
-                    </a><a class="projectItem b" target="_blank" href="https://chatgpt.com/">
-                        <div class="projectItemLeft">
-                            <h1>GPT</h1>
-                            <p>OpenAI</p>
-                        </div>
-                        <div class="projectItemRight">
-                            <img src="./static/img/gpt.png" alt="">
-                        </div>
-                    </a>
-                </div>
-                <div class="title">
-                    
-                    <i class="mdi mdi-school"></i>Panel
-                </div>
-                <div class="projectList">
-                    <a class="projectItem b" target="_blank" href="https://952780.xyz/">
-                        <div class="projectItemLeft">
-                            <h1>HOME</h1>
-                            <p>HOME</p>
-                        </div>
-                        <div class="projectItemRight">
-                            <img src="./static/img/i5.png" alt="">
-                        </div>
-                    </a><a class="projectItem b" target="_blank" href="https://952780.xyz/">
-                        <div class="projectItemLeft">
-                            <h1>HOME</h1>
-                            <p>HOME</p>
-                        </div>
-                        <div class="projectItemRight">
-                            <img src="./static/img/i6.png" alt="">
-                        </div>
-                    </a><a class="projectItem b" target="_blank" href="https://gmeek.952780.xyz/">
-                        <div class="projectItemLeft">
-                            <h1>HOME</h1>
-                            <p>HOME</p>
-                        </div>
-                        <div class="projectItemRight">
-                            <img src="./static/img/blog.png" alt="">
-                        </div>
-                    </a><a class="projectItem b" target="_blank" href="https://doc.sun-panel.top/zh_cn/">
-                        <div class="projectItemLeft">
-                            <h1>Sun-Panel</h1>
-                            <p>Sun-Panel</p>
-                        </div>
-                        <div class="projectItemRight">
-                            <img src="./static/img/sun.png" alt="">
-                        </div>
-                    </a>
-                </div>
-                <div class="title">
-                    
-                    <i class="mdi mdi-vacuum-outline"></i>skills
-                </div>
-                <div class="skill">
-                    
-                    <img id="skillPc" src="./static/svg/skillPc.svg" alt="" srcset="">
-                    
-                    <img id="skillWap" src="./static/svg/skillWap.svg" alt="" srcset="">
-                    
-                </div>
-            </content>
-        </div>
-    </div>
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="copyright">
-                Deer © 2025
-                <a href="https://github.com/deerwan/homepage" target="_blank" style="color: inherit; text-decoration: none;">
-                    <i class="mdi mdi-github"></i> GitHub
-                </a>
+            <div class="hitokoto" aria-live="polite">
+                <p class="hitokoto-text">加载中...</p>
+                <p class="hitokoto-from">- [加载中...]</p>
             </div>
+            
+            <nav class="navigation" aria-label="主导航">
+                <a href="https://deerwan.github.io" class="nav-item" rel="noopener">博客</a>
+                <a href="#navigation" class="nav-item">导航</a>
+                <a href="#guestbook" class="nav-item">留言</a>
+                <a href="#friends" class="nav-item">友链</a>
+                <a href="#about" class="nav-item">关于</a>
+            </nav>
+        </div>
+    </main>
+    
+    <!-- 关于页面 -->
+    <section id="about" class="section" aria-label="关于我">
+        <div class="about-container">
+            <a href="#" class="back-btn" id="back-btn-about"><i class="fas fa-arrow-left" aria-hidden="true"></i> <span>返回</span></a>
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content">
+                <div class="about-avatar">
+                    <img src="assets/img/logo.png" alt="个人头像" width="200" height="200" loading="lazy">
+                    <div class="social-links about-social">
+                        <a href="https://github.com/deerwan" target="_blank" rel="noopener" aria-label="GitHub主页">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://deerwan.github.io" target="_blank" rel="noopener" aria-label="博客">
+                            <i class="fas fa-blog" aria-hidden="true"></i>
+                        </a>
+                        <a href="mailto:mrdeer7@qq.com" rel="noopener noreferrer" aria-label="发送邮件">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://t.me/mrdeer77" target="_blank" rel="noopener" aria-label="Telegram群组">
+                            <i class="fab fa-telegram-plane" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://t.me/mrdeer7" target="_blank" rel="noopener" aria-label="Telegram频道">
+                            <i class="fab fa-telegram" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="about-info">
+                    <h3>个人简介</h3>
+                    <p>欢迎来到我的个人主页!</p>
+                    
+                    <h3>技能标签</h3>
+                    <div class="skill-tags" aria-label="我的技能">
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
+                    </div>
+                    
+                    <h3>兴趣爱好</h3>
+                    <p>编程、阅读、摄影、旅行</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 留言板 -->
+    <section id="guestbook" class="section" aria-label="留言板">
+        <div class="about-container">
+            <a href="#" class="back-btn" id="back-btn-guestbook"><i class="fas fa-arrow-left" aria-hidden="true"></i> <span>返回</span></a>
+            <h2 class="section-title">留言板</h2>
+            
+            <div class="guestbook-intro">
+                <p>欢迎在这里留下您的想法、建议或问候！</p>
+            </div>
+            
+            <!-- Waline 评论容器 -->
+            <div id="waline"></div>
+        </div>
+    </section>
+    
+    <!-- 友链板块 -->
+    <section id="friends" class="section" aria-label="友链">
+      <div class="about-container">
+        <a href="#" class="back-btn" id="back-btn-friends"><i class="fas fa-arrow-left" aria-hidden="true"></i> <span>返回</span></a>
+        <h2 class="section-title">友链</h2>
+        <div class="friends-list">
+          <a class="friend-item" href="https://linux.do/" target="_blank" rel="noopener">
+            <img src="https://www.faviconextractor.com/favicon/linux.do" alt="LINUX DO" width="48" height="48" class="avatar-round">
+            <div>
+              <div class="friend-name">LINUX DO</div>
+              <div class="friend-desc">新的理想型社区</div>
+            </div>
+          </a>
+          
+          <!-- 友链模板：复制以下结构添加新友链 -->
+          <a class="friend-item" href="https://linux.do/" target="_blank" rel="noopener">
+            <img src="https://www.faviconextractor.com/favicon/linux.do" alt="站点名称" width="48" height="48" class="avatar-round">
+            <div>
+              <div class="friend-name">LINUX DO</div>
+              <div class="friend-desc">新的理想型社区</div>
+            </div>
+          </a>
+          <!-- 可继续添加更多友链 -->
+
+
+        </div>
+        <!-- 友链提交入口 -->
+        <div class="friend-submit mt-2">
+          <h3>申请友链</h3>
+          <form id="friend-link-form">
+            <input type="text" name="name" placeholder="您的网站名称" required class="mb-05">
+            <input type="url" name="url" placeholder="您的网站链接" required class="mb-05">
+            <input type="url" name="logo" placeholder="Logo图片链接（可选）" class="mb-05">
+            <textarea name="desc" placeholder="网站描述（可选）" rows="2" class="mb-05"></textarea>
+            <div class="mb-05" style="text-align:left; color:#fff;">
+              <label style="margin-right:1.5rem;">
+                <input type="radio" name="pushType" value="telegram" required> Telegram
+              </label>
+              <label>
+                <input type="radio" name="pushType" value="feishu" required> 飞书
+              </label>
+            </div>
+            <button type="submit">提交申请</button>
+          </form>
+          <div id="friend-link-result" class="friend-result"></div>
+        </div>
+        </div>
+    </section>
+    
+    <!-- 个人导航板块 -->
+    <section id="navigation" class="section" aria-label="个人导航">
+        <div class="about-container">
+            <a href="#" class="back-btn" id="back-btn-navigation"><i class="fas fa-arrow-left" aria-hidden="true"></i> <span>返回</span></a>
+            <h2 class="section-title">个人导航</h2>
+            <div class="navigation-intro">
+                <p>这里收集了一些我常用的网站和工具，希望对您也有帮助！</p>
+            </div>
+            
+            <div class="navigation-categories">
+                <!-- 自用板块 -->
+                <div class="nav-category">
+                    <h3><i class="fas fa-rocket" aria-hidden="true"></i> 自用应用</h3>
+                    <div class="nav-links">
+                        <a class="nav-link-item" href="https://nezha.952780.xyz/" target="_blank" rel="noopener">
+                            <span class="nav-icon emoji-icon">🚀</span>
+                            <div>
+                                <div class="nav-name">Nezha</div>
+                                <div class="nav-desc">服务器监控</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://status.106996.xyz/" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/status.106996.xyz" alt="应用2" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">Uptimerobot</div>
+                                <div class="nav-desc">网站监控</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://sun.952780.xyz/" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/sun.952780.xyz" alt="应用3" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">SunPanel</div>
+                                <div class="nav-desc">自用导航</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://pro.952780.xyz/" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/pro.952780.xyz" alt="Pro" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">Pro</div>
+                                <div class="nav-desc">京豆登录</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://rabbit.952780.xyz/" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/rabbit.952780.xyz" alt="Rabbit" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">Rabbit</div>
+                                <div class="nav-desc">京东登录</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://img.106996.xyz/" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/img.106996.xyz" alt="图片服务" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">ImgHub</div>
+                                <div class="nav-desc">图床</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://card-tab.106996.xyz/" target="_blank" rel="noopener">
+                            <span class="nav-icon emoji-icon">📋</span>
+                            <div>
+                                <div class="nav-name">card-tab</div>
+                                <div class="nav-desc">导航卡片管理</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://ssh.cmliussss.net/" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/ssh.cmliussss.net" alt="WebSSH" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">WebSSH</div>
+                                <div class="nav-desc">在线SSH终端</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 开发工具 -->
+                <div class="nav-category">
+                    <h3><i class="fas fa-code" aria-hidden="true"></i> 开发工具</h3>
+                    <div class="nav-links">
+                        <a class="nav-link-item" href="https://github.com" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/github.com" alt="GitHub" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">GitHub</div>
+                                <div class="nav-desc">代码托管平台</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://stackoverflow.com" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/stackoverflow.com" alt="Stack Overflow" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">Stack Overflow</div>
+                                <div class="nav-desc">程序员问答社区</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://developer.mozilla.org" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/developer.mozilla.org" alt="MDN Web Docs" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">MDN Web Docs</div>
+                                <div class="nav-desc">Web开发文档</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 学习资源 -->
+                <div class="nav-category">
+                    <h3><i class="fas fa-graduation-cap" aria-hidden="true"></i> 学习资源</h3>
+                    <div class="nav-links">
+                        <a class="nav-link-item" href="https://www.w3schools.com" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/w3schools.com" alt="W3Schools" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">W3Schools</div>
+                                <div class="nav-desc">Web技术教程</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://www.freecodecamp.org" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/freecodecamp.org" alt="freeCodeCamp" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">freeCodeCamp</div>
+                                <div class="nav-desc">免费编程学习平台</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://www.udemy.com" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/udemy.com" alt="Udemy" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">Udemy</div>
+                                <div class="nav-desc">在线课程平台</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 实用工具 -->
+                <div class="nav-category">
+                    <h3><i class="fas fa-tools" aria-hidden="true"></i> 实用工具</h3>
+                    <div class="nav-links">
+                        <a class="nav-link-item" href="https://www.canva.com" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/canva.com" alt="Canva" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">Canva</div>
+                                <div class="nav-desc">在线设计工具</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://www.notion.so" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/notion.so" alt="Notion" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">Notion</div>
+                                <div class="nav-desc">笔记和协作工具</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://www.figma.com" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/figma.com" alt="Figma" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">Figma</div>
+                                <div class="nav-desc">UI/UX设计工具</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 娱乐休闲 -->
+                <div class="nav-category">
+                    <h3><i class="fas fa-gamepad" aria-hidden="true"></i> 娱乐休闲</h3>
+                    <div class="nav-links">
+                        <a class="nav-link-item" href="https://www.youtube.com" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/youtube.com" alt="YouTube" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">YouTube</div>
+                                <div class="nav-desc">视频分享平台</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://www.bilibili.com" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/bilibili.com" alt="哔哩哔哩" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">哔哩哔哩</div>
+                                <div class="nav-desc">视频弹幕网站</div>
+                            </div>
+                        </a>
+                        <a class="nav-link-item" href="https://music.163.com" target="_blank" rel="noopener">
+                            <img src="https://www.faviconextractor.com/favicon/music.163.com" alt="网易云音乐" width="32" height="32" class="nav-icon">
+                            <div>
+                                <div class="nav-name">网易云音乐</div>
+                                <div class="nav-desc">音乐播放平台</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <p>
+                Deer &copy; <span id="current-year"></span>
+                <a href="https://github.com/deerwan/homepage_demo" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; margin-left: 10px;">
+                    <i class="ri-github-fill"></i> GitHub
+                </a>
+            </p>
         </div>
     </footer>
-    <div class="tc">
-        
-        <div onclick="" class="tc-main">
-            
-            <img class="tc-img" src="" alt="" srcset="">
-            
-        </div>
 
-    </div>
+    <!-- 主脚本延迟加载 -->
+    <script src="assets/js/main.js" defer></script>
+    
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Deer",
+      "url": "https://home.952780.xyz",
+      "image": "/assets/img/logo.png",
+      "sameAs": [
+        "https://github.com/deerwan",
+        "https://deerwan.github.io"
+      ],
+      "jobTitle": "开发者",
+      "knowsAbout": ["Web开发", "前端技术", "JavaScript", "React", "Node.js", "Python"]
+    }
+    </script>
+
+    <!-- 网易云歌单播放器（APlayer + MetingJS）
+         lrc-type="0" 表示关闭歌词显示，autoplay="true" 表示自动播放 -->
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="8417796623"
+        fixed="true"
+        autoplay="true"
+        order="random"
+        theme="#4a89dc"
+        loop="all"
+        preload="auto"
+        volume="0.7"
+        lrc-type="0">
+    </meting-js>
+    <!-- APlayer CSS（音乐播放器样式） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+    <!-- APlayer JS（音乐播放器功能） -->
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+    <!-- MetingJS（支持网易云等歌单，需在APlayer后引入） -->
+    <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
 </body>
-<script src="./static/js/script.js"> </script>
-
-
-<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-
 </html>
