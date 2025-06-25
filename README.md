@@ -113,3 +113,17 @@ WALINE_SERVER_URL: 'https://xxx' // Waline评论系统服务端地址
 - 关键 JS/CSS 逻辑均有注释，便于二次开发和团队协作。
 - 如需批量管理友链、留言等，建议用 JS 维护数据源并动态渲染。
 - 欢迎 issue 或 PR 反馈和贡献！
+
+## 自动化部署（GitHub Actions）
+
+本项目已集成 GitHub Actions 自动化部署，推送到 main 分支后会自动发布到 GitHub Pages。
+
+### 如何启用
+1. Fork 或 Clone 本仓库到你的 GitHub 账号。
+2. 进入仓库页面，点击 Settings > Pages，选择部署分支为 `gh-pages` 或 `main`（根目录）。
+3. 每次 push 到 main 分支后，GitHub Actions 会自动部署，无需手动操作。
+
+### 工作流文件位置
+`.github/workflows/deploy.yml`
+
+如需自定义部署流程，可修改该文件内容。
