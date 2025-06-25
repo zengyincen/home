@@ -3,8 +3,8 @@ const CONFIG = {
     BING_WALLPAPER_URL: 'https://bing.img.run/rand.php', // 必应壁纸API
     BING_FALLBACK_URL: 'https://api.dujin.org/bing/1920.php', // 备用壁纸API
     HITOKOTO_API: 'https://v1.hitokoto.cn', // 一言API
-    FRIEND_LINK_API: 'https://home-push-friend-link.952780.xyz/', // 友链推送API地址
-    WALINE_SERVER_URL: 'https://waline.952780.xyz' // Waline评论系统服务端地址
+    FRIEND_LINK_API: 'https://填入你的友链推送API地址', // 友链推送API地址
+    WALINE_SERVER_URL: 'https://填入你的Waline服务端地址' // Waline评论系统服务端地址
 };
 
 // 性能优化：使用防抖函数
