@@ -387,7 +387,19 @@ body::before {
     background: transparent !important;
 }
 
-/* 移除空容器提示，因为已经添加了loading-message */
+/* 修复Giscus框架加载问题 */
+.giscus {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+/* 更好的暗色主题支持 */
+.giscus-frame {
+    color-scheme: dark;
+    background-color: transparent !important;
+}
+
+
 
 /* 页脚 */
 .footer {
@@ -462,7 +474,7 @@ body::before {
         gap: 1rem;
     }
     
-    /* 留言板样式已移除 */
+
     
     /* 优化滚动区域 */
     .section {

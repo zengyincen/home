@@ -10,6 +10,24 @@
     <meta name="robots" content="index, follow">
     <title>Deer - 个人主页</title>
     
+    <!-- 临时控制台清理脚本，可在调试完成后移除 -->
+    <script>
+        console.clear();
+        // 禁止缓存API请求
+        fetch = ((originalFetch) => {
+          return (...args) => {
+            const [resource, config] = args;
+            // 为API URL添加时间戳参数，避免缓存
+            if (resource && resource.includes('api')) {
+              const url = new URL(resource);
+              url.searchParams.append('_t', Date.now());
+              args[0] = url.toString();
+            }
+            return originalFetch.apply(null, args);
+          };
+        })(fetch);
+    </script>
+    
     <!-- Open Graph / 社交媒体预览 -->
     <meta property="og:title" content="Deer - 个人主页">
     <meta property="og:description" content="欢迎访问Deer的个人主页">
@@ -23,12 +41,14 @@
     <link rel="manifest" href="/manifest.json">
     
     <!-- 资源预加载和预连接 -->
+    <link rel="preload" href="https://v.api.aa1.cn/api/yiyan/index.php" as="fetch" crossorigin>
     <link rel="preconnect" href="https://v.api.aa1.cn">
     <link rel="preconnect" href="https://bing.img.run">
     <link rel="dns-prefetch" href="https://v.api.aa1.cn">
     <link rel="dns-prefetch" href="https://bing.img.run">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
     
     <!-- 关键CSS内联（实际项目中可以使用构建工具自动生成） -->
     <link rel="stylesheet" href="assets/css/style.css" media="print" onload="this.media='all'">
@@ -138,10 +158,10 @@
             <!-- Giscus 评论容器 - 修改为直接嵌入版本，解决跨域问题 -->
             <div id="giscus-container" class="giscus-container">
                 <script src="https://giscus.app/client.js"
-                    data-repo="deerwan/deerwan.github.io"
-                    data-repo-id="R_kgDOLI2OlA"
+                    data-repo="deerwan/homepage"
+                    data-repo-id="R_kgDONnyo4Q"
                     data-category="Announcements"
-                    data-category-id="DIC_kwDOLI2OlM4CdfBh"
+                    data-category-id="DIC_kwDONnyo4c4CsCfJ"
                     data-mapping="pathname"
                     data-strict="0"
                     data-reactions-enabled="1"
@@ -150,7 +170,7 @@
                     data-theme="dark_dimmed"
                     data-lang="zh-CN"
                     data-loading="lazy"
-                    data-crossorigin="anonymous"
+                    crossorigin="anonymous"
                     async>
                 </script>
                 <noscript>请启用JavaScript以使用评论系统。</noscript>
@@ -449,39 +469,6 @@
     <!-- MetingJS（支持网易云等歌单，需在APlayer后引入） -->
     <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
     
-    <!-- Giscus 评论系统 -->
-    <!-- 
-    Giscus参数说明：
-    data-repo：仓库名称，格式为 用户名/仓库名
-    data-repo-id：仓库ID，可从 Giscus 网站获取
-    data-category：GitHub Discussions 分类名称，通常为 "Announcements"
-    data-category-id：分类ID，可从 Giscus 网站获取
-    data-mapping：评论映射方式：pathname(页面路径)、url(完整URL)、title(页面标题)、og:title(Open Graph标题)
-    data-strict：是否启用严格匹配，1=严格，0=宽松
-    data-reactions-enabled：是否启用表情反应功能，1=启用，0=禁用
-    data-emit-metadata：是否发送元数据，通常保持禁用以增加隐私，1=启用，0=禁用
-    data-input-position：评论框位置：top(顶部)或bottom(底部)
-    data-theme：主题：light, dark, dark_dimmed, dark_high_contrast, preferred_color_scheme
-    data-lang：界面语言：zh-CN(中文)、en(英文)等
-    data-loading：加载方式：lazy(延迟加载)或eager(立即加载)
-    crossorigin：跨域设置，通常保持为anonymous
-    async：异步加载脚本以提高性能
-    -->
-    <script src="https://giscus.app/client.js"
-            data-repo="deerwan/homepage"
-            data-repo-id="R_kgDONnyo4Q"
-            data-category="Announcements"
-            data-category-id="DIC_kwDONnyo4c4CsCfJ"
-            data-mapping="pathname"
-            data-strict="0"
-            data-reactions-enabled="1"
-            data-emit-metadata="0"
-            data-input-position="bottom"
-            data-theme="preferred_color_scheme"
-            data-lang="zh-CN"
-            data-loading="eager"
-            crossorigin="anonymous"
-            async>
-</script>
+    <!-- Giscus 评论系统已在留言板部分实现，此处移除重复代码 -->
 </body>
 </html>

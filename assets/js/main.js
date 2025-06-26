@@ -6,6 +6,16 @@ const CONFIG = {
     FRIEND_LINK_API: 'https://home-push-friend-link.952780.xyz/' // 友链推送API地址
 };
 
+// 清理旧的服务工作者
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+        for (let registration of registrations) {
+            registration.unregister();
+            console.log('已注销服务工作者:', registration);
+        }
+    });
+}
+
 // 性能优化：使用防抖函数
 function debounce(func, delay = 300) {
     let timer;
@@ -96,11 +106,7 @@ function tryFallbackWallpaper() {
     }, 3000);
 }
 
-// 设置固定背景色或图片
-function setBackground() {
-    document.body.style.backgroundColor = '#121212';
-    document.body.style.backgroundImage = 'none';
-}
+// 已删除未使用的setBackground函数
 
 // 获取一言
 async function getHitokoto() {
@@ -154,15 +160,9 @@ function fallbackHitokoto() {
     document.querySelector('.hitokoto-from').textContent = '- [网络]';
 }
 
-// 格式化日期
-function formatDate(timestamp) {
-    const date = new Date(timestamp);
-    return date.getFullYear() + '-' + 
-           String(date.getMonth() + 1).padStart(2, '0') + '-' + 
-           String(date.getDate()).padStart(2, '0');
-}
+// 已删除未使用的formatDate函数
 
-// 留言相关函数已移除
+
 
 // 页面加载后主入口
 // 包含：自动设置年份、返回按钮处理、表单处理、导航高亮等
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 监听hash变化
     window.addEventListener('hashchange', setActiveNavItem);
 
-    // 不需要再手动初始化Giscus，已在HTML中直接嵌入
+
     
     // 添加页面可见性监听，节省资源
     document.addEventListener('visibilitychange', () => {
