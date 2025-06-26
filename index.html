@@ -14,7 +14,7 @@
     <meta property="og:title" content="Deer - 个人主页">
     <meta property="og:description" content="欢迎访问Deer的个人主页">
     <meta property="og:image" content="/assets/img/logo.png">
-    <meta property="og:url" content="https://lllh.de">
+    <meta property="og:url" content="https://home.952780.xyz">
     <meta property="og:type" content="website">
     
     <!-- 图标和元数据 -->
@@ -45,10 +45,6 @@
           media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"></noscript>
     
-    <!-- Waline评论系统CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" 
-          media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css"></noscript>
     
     <link rel="preload" href="/assets/fonts/NotoSansSC-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="/assets/fonts/NotoSansSC-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -136,12 +132,16 @@
             
             <div class="guestbook-intro">
                 <p>欢迎在这里留下您的想法、建议或问候！</p>
+                <p class="guestbook-notice">基于GitHub Issues的评论系统，需要GitHub账号登录后才能评论。</p>
             </div>
             
-            <!-- Waline 评论容器 -->
-            <div id="waline"></div>
+            <!-- Giscus 评论容器 -->
+            <div id="giscus-container" class="giscus-container">
+                <div class="loading-message">评论系统加载中，请稍候...</div>
+            </div>
         </div>
     </section>
+    
     
     <!-- 友链板块 -->
     <section id="friends" class="section" aria-label="友链">
@@ -149,7 +149,6 @@
         <a href="#" class="back-btn" id="back-btn-friends"><i class="fas fa-arrow-left" aria-hidden="true"></i> <span>返回</span></a>
         <h2 class="section-title">友链</h2>
         <div class="friends-list">
-          <!-- 友链模板：如需添加新友链，请复制下方结构 -->
           <a class="friend-item" href="https://linux.do/" target="_blank" rel="noopener">
             <img src="https://www.faviconextractor.com/favicon/linux.do" alt="LINUX DO" width="48" height="48" class="avatar-round">
             <div>
@@ -157,7 +156,16 @@
               <div class="friend-desc">新的理想型社区</div>
             </div>
           </a>
-          <!-- 友链模板：如需添加新友链，请复制上方结构 -->
+          
+          <!-- 友链模板：复制以下结构添加新友链 -->
+          <a class="friend-item" href="https://linux.do/" target="_blank" rel="noopener">
+            <img src="https://www.faviconextractor.com/favicon/linux.do" alt="站点名称" width="48" height="48" class="avatar-round">
+            <div>
+              <div class="friend-name">LINUX DO</div>
+              <div class="friend-desc">新的理想型社区</div>
+            </div>
+          </a>
+          <!-- 可继续添加更多友链 -->
 
 
         </div>
@@ -392,7 +400,7 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Deer",
-      "url": "https://lllh.de",
+      "url": "https://home.952780.xyz",
       "image": "/assets/img/logo.png",
       "sameAs": [
         "https://github.com/deerwan",
@@ -424,5 +432,40 @@
     <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
     <!-- MetingJS（支持网易云等歌单，需在APlayer后引入） -->
     <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+    
+    <!-- Giscus 评论系统 -->
+    <!-- 
+    Giscus参数说明：
+    data-repo：仓库名称，格式为 用户名/仓库名
+    data-repo-id：仓库ID，可从 Giscus 网站获取
+    data-category：GitHub Discussions 分类名称，通常为 "Announcements"
+    data-category-id：分类ID，可从 Giscus 网站获取
+    data-mapping：评论映射方式：pathname(页面路径)、url(完整URL)、title(页面标题)、og:title(Open Graph标题)
+    data-strict：是否启用严格匹配，1=严格，0=宽松
+    data-reactions-enabled：是否启用表情反应功能，1=启用，0=禁用
+    data-emit-metadata：是否发送元数据，通常保持禁用以增加隐私，1=启用，0=禁用
+    data-input-position：评论框位置：top(顶部)或bottom(底部)
+    data-theme：主题：light, dark, dark_dimmed, dark_high_contrast, preferred_color_scheme
+    data-lang：界面语言：zh-CN(中文)、en(英文)等
+    data-loading：加载方式：lazy(延迟加载)或eager(立即加载)
+    crossorigin：跨域设置，通常保持为anonymous
+    async：异步加载脚本以提高性能
+    -->
+    <script src="https://giscus.app/client.js"
+            data-repo="deerwan/homepage"
+            data-repo-id="R_kgDONnyo4Q"
+            data-category="Announcements"
+            data-category-id="DIC_kwDONnyo4c4CsCfJ"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="preferred_color_scheme"
+            data-lang="zh-CN"
+            data-loading="eager"
+            crossorigin="anonymous"
+            async>
+</script>
 </body>
 </html>

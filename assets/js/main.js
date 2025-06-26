@@ -3,8 +3,7 @@ const CONFIG = {
     BING_WALLPAPER_URL: 'https://bing.img.run/rand.php', // 必应壁纸API
     BING_FALLBACK_URL: 'https://api.dujin.org/bing/1920.php', // 备用壁纸API
     HITOKOTO_API: 'https://v1.hitokoto.cn', // 一言API
-    FRIEND_LINK_API: 'https://填入你的友链推送API地址', // 友链推送API地址
-    WALINE_SERVER_URL: 'https://填入你的Waline服务端地址' // Waline评论系统服务端地址
+    FRIEND_LINK_API: 'https://home-push-friend-link.952780.xyz/' // 友链推送API地址
 };
 
 // 性能优化：使用防抖函数
@@ -151,42 +150,10 @@ function formatDate(timestamp) {
            String(date.getDate()).padStart(2, '0');
 }
 
-// 创建留言HTML
-function createMessageHTML(message) {
-    return `
-        <div class="message-item">
-            <div class="message-header">
-                <span class="message-author">${message.name}</span>
-                <span class="message-date">${formatDate(message.timestamp)}</span>
-            </div>
-            <div class="message-content">
-                <p>${message.content}</p>
-            </div>
-        </div>
-    `;
-}
-
-// 获取留言列表
-async function getMessages() {
-    try {
-        const response = await fetch(`${CONFIG.API_BASE_URL}/api/messages`);
-        if (!response.ok) throw new Error('获取留言失败');
-        
-        const messages = await response.json();
-        const messageList = document.querySelector('.message-list');
-        messageList.innerHTML = '';
-        
-        messages.forEach(message => {
-            messageList.insertAdjacentHTML('beforeend', createMessageHTML(message));
-        });
-    } catch (error) {
-        console.error('获取留言失败:', error);
-        alert('获取留言失败，请稍后再试');
-    }
-}
+// 留言相关函数已移除
 
 // 页面加载后主入口
-// 包含：自动设置年份、返回按钮处理、表单处理、导航高亮、Waline初始化等
+// 包含：自动设置年份、返回按钮处理、表单处理、导航高亮等
 
 document.addEventListener('DOMContentLoaded', function() {
     // 并行加载资源
@@ -216,6 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 监听hash变化
     window.addEventListener('hashchange', setActiveNavItem);
 
+    // 处理留言板Giscus加载
     if (window.location.hash === '#guestbook') {
         // 添加小延迟确保DOM已完全渲染
         setTimeout(() => {
@@ -223,11 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (guestbookSection) {
                 guestbookSection.style.transform = 'translateY(0)';
                 guestbookSection.style.visibility = 'visible';
-
-                // 只有在可见时才加载评论系统
-                if (typeof loadWaline === 'function') {
-                    loadWaline();
-                }
+                initGiscus();
             }
         }, 100);
     }
@@ -333,61 +297,55 @@ function setActiveNavItem() {
     // 如果没有hash，则不设置任何活动项
 }
 
-// 仅当访问留言板时才加载评论系统
-if(window.location.hash === '#guestbook') {
-    loadWaline();
+// Giscus 评论系统加载函数
+function initGiscus() {
+    const giscusContainer = document.getElementById('giscus-container');
+    if (giscusContainer) {
+        // 检查是否已经加载
+        if (!document.querySelector('.giscus-frame')) {
+            console.log('Giscus加载中...');
+            
+            // 如果脚本已经存在但未正确加载，尝试重新加载
+            const existingScript = document.querySelector('script[src*="giscus.app/client.js"]');
+            if (existingScript) {
+                existingScript.remove();
+            }
+            
+            // 重新创建脚本
+            const giscusScript = document.createElement('script');
+            giscusScript.src = 'https://giscus.app/client.js';
+            giscusScript.setAttribute('data-repo', 'deerwan/homepage');
+            giscusScript.setAttribute('data-repo-id', 'R_kgDONnyo4Q');
+            giscusScript.setAttribute('data-category', 'Announcements');
+            giscusScript.setAttribute('data-category-id', 'DIC_kwDONnyo4c4CsCfJ');
+            giscusScript.setAttribute('data-mapping', 'pathname');
+            giscusScript.setAttribute('data-strict', '0');
+            giscusScript.setAttribute('data-reactions-enabled', '1');
+            giscusScript.setAttribute('data-emit-metadata', '0');
+            giscusScript.setAttribute('data-input-position', 'bottom');
+            giscusScript.setAttribute('data-theme', 'preferred_color_scheme');
+            giscusScript.setAttribute('data-lang', 'zh-CN');
+            giscusScript.setAttribute('data-loading', 'eager');
+            giscusScript.setAttribute('crossorigin', 'anonymous');
+            giscusScript.async = true;
+            
+            // 添加脚本到容器中
+            giscusContainer.appendChild(giscusScript);
+        }
+    }
 }
 
+// 监听hash变化，当访问留言板时加载Giscus
 window.addEventListener('hashchange', function() {
-    if(window.location.hash === '#guestbook') {
-        loadWaline();
+    if (window.location.hash === '#guestbook') {
+        const guestbookSection = document.getElementById('guestbook');
+        if (guestbookSection) {
+            setTimeout(() => {
+                initGiscus();
+            }, 300);
+        }
     }
 });
-
-function loadWaline() {
-    // 先加载CSS确保样式正常
-    const cssLink = document.createElement('link');
-    cssLink.rel = 'stylesheet';
-    cssLink.href = 'https://unpkg.com/@waline/client@v3/dist/waline.css';
-    document.head.appendChild(cssLink);
-
-    import('https://unpkg.com/@waline/client@v3/dist/waline.js')
-        .then(module => {
-            const { init } = module;
-            if (!window.walineInstance) {
-                window.walineInstance = init({
-                    el: '#waline',
-                    serverURL: CONFIG.WALINE_SERVER_URL,
-                    dark: true,
-                    lang: 'zh-CN', // 明确指定中文
-                    emoji: [
-                        '//unpkg.com/@waline/emojis@1.1.0/weibo',
-                        '//unpkg.com/@waline/emojis@1.1.0/bilibili'
-                    ],
-                    meta: ['nick', 'mail'],
-                    requiredMeta: ['nick', 'mail'],
-                    pageSize: 10,
-                    login: 'enable',
-                    quickComment: true,
-                    search: false,
-                    copyright: false,
-                    locale: { // 自定义语言
-                        placeholder: '欢迎留言讨论...',
-                        sofa: '来做第一个留言的人吧~',
-                        submit: '提交',
-                        reply: '回复',
-                        cancelReply: '取消回复',
-                        admin: '管理员',
-                        level0: '潜水',
-                        level1: '冒泡',
-                        level2: '活跃',
-                        level3: '热心'
-                    }
-                });
-            }
-        })
-        .catch(error => console.error('Waline 加载失败:', error));
-}
 
 document.addEventListener('click', function(e) {
   // 排除按钮、链接、输入框等交互元素

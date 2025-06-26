@@ -346,63 +346,43 @@ body::before {
     text-align: center;
 }
 
-/* Waline评论系统样式覆盖 */
-#waline.wl-comment {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-#waline .wl-btn {
-    background-color: var(--accent-color);
-    color: white;
-}
-
-#waline .wl-header {
-    /* 移除底部边框 */
-    /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
-    padding-bottom: 1rem;
-}
-
-#waline .wl-header label {
-    color: var(--primary-color);
-}
-
-#waline .wl-panel {
-    margin-top: 1rem;
-}
-
-#waline .wl-editor {
-    min-height: 8em;
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--primary-color);
-    border: none; /* 移除边框 */
-}
-
-#waline .wl-editor:focus {
-    background: rgba(255, 255, 255, 0.1);
-    /* border-color: var(--accent-color); */
-    outline: none; /* 移除焦点边框 */
-}
-
-#waline .wl-meta > span {
+.guestbook-notice {
+    font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.6);
+    margin-top: 0.5rem;
 }
 
-/* 评论卡片样式 */
-#waline .wl-card {
-    background: rgba(0, 0, 0, 0.2);
-    /* 移除边框 */
-    /* border: 1px solid rgba(255, 255, 255, 0.1); */
-    border-radius: 8px;
-    padding: 15px;
-    margin-top: 15px;
-    transition: transform 0.3s ease;
+.loading-message {
+    color: var(--primary-color);
+    text-align: center;
+    padding: 2rem;
+    font-size: 1rem;
 }
 
-#waline .wl-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+/* Giscus 容器样式 */
+.giscus-container {
+    width: 100%;
+    min-height: 300px;
+    margin: 1rem auto;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+/* Giscus暗色主题自定义 */
+.giscus-frame {
+    border: none !important;
+    width: 100% !important;
+    min-height: 300px !important;
+    background: transparent !important;
+}
+
+/* 移除空容器提示，因为已经添加了loading-message */
 
 /* 页脚 */
 .footer {
@@ -477,10 +457,7 @@ body::before {
         gap: 1rem;
     }
     
-    /* 优化留言板样式 */
-    #waline .wl-editor {
-        min-height: 6em;
-    }
+    /* 留言板样式已移除 */
     
     /* 优化滚动区域 */
     .section {
