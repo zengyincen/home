@@ -197,21 +197,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     
-    // 添加页面可见性监听，节省资源
-    document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible') {
-            // 页面重新可见时刷新一言
-            getHitokoto();
-        }
-    });
-
     // 添加窗口大小变化监听，使用防抖优化性能
     window.addEventListener('resize', debounce(() => {
         // 可以在这里添加响应窗口大小变化的逻辑
     }, 200));
     
-    // 定期更新一言
-    setInterval(getHitokoto, 60000); // 每分钟更新一次
+    // 不再定期更新一言，仅在页面刷新时获取新内容
     
     // 等待字体和背景图片都加载好后再移除 loading
     setTimeout(() => {
