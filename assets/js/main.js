@@ -2,7 +2,7 @@
 const CONFIG = {
     BING_WALLPAPER_URL: 'https://bing.img.run/rand.php', // 必应壁纸API
     BING_FALLBACK_URL: 'https://api.dujin.org/bing/1920.php', // 备用壁纸API
-    HITOKOTO_API: 'https://v1.hitokoto.cn', // 一言API
+    HITOKOTO_API: 'https://v1.hitokoto.cn?c=d&c=i&encode=json', // 一言API，添加参数和指定返回格式
     FRIEND_LINK_API: 'https://home-push-friend-link.952780.xyz/' // 友链推送API地址
 };
 
@@ -108,38 +108,63 @@ async function getHitokoto() {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 3000); // 3秒超时
         
-        const response = await fetch(CONFIG.HITOKOTO_API, { 
-            signal: controller.signal 
-        });
-        clearTimeout(timeoutId);
+        // 使用JSONP方式解决跨域问题
+        const script = document.createElement('script');
+        const callbackName = 'hitokotoCallback_' + Date.now();
         
-        const data = await response.json();
+        // 创建全局回调函数
+        window[callbackName] = function(data) {
+            // 清除超时
+            clearTimeout(timeoutId);
+            
+            // 更新DOM
+            const hitokotoText = document.querySelector('.hitokoto-text');
+            const hitokotoFrom = document.querySelector('.hitokoto-from');
+            
+            // 设置透明度为0
+            hitokotoText.style.opacity = '0';
+            hitokotoFrom.style.opacity = '0';
+            
+            // 更新文本内容
+            hitokotoText.textContent = data.hitokoto;
+            hitokotoFrom.textContent = `- [${data.from}]`;
+            
+            // 使用setTimeout实现淡入效果
+            setTimeout(() => {
+                hitokotoText.style.transition = 'opacity 0.8s ease';
+                hitokotoFrom.style.transition = 'opacity 0.8s ease';
+                hitokotoText.style.opacity = '1';
+                hitokotoFrom.style.opacity = '1';
+            }, 100);
+            
+            // 移除脚本标签和回调函数
+            document.body.removeChild(script);
+            delete window[callbackName];
+        };
         
-        // 添加淡入效果
-        const hitokotoText = document.querySelector('.hitokoto-text');
-        const hitokotoFrom = document.querySelector('.hitokoto-from');
+        // 添加script标签到页面
+        script.src = `${CONFIG.HITOKOTO_API}&callback=${callbackName}`;
+        document.body.appendChild(script);
         
-        // 设置透明度为0
-        hitokotoText.style.opacity = '0';
-        hitokotoFrom.style.opacity = '0';
-        
-        // 更新文本内容
-        hitokotoText.textContent = data.hitokoto;
-        hitokotoFrom.textContent = `- [${data.from}]`;
-        
-        // 使用setTimeout实现淡入效果
-        setTimeout(() => {
-            hitokotoText.style.transition = 'opacity 0.8s ease';
-            hitokotoFrom.style.transition = 'opacity 0.8s ease';
-            hitokotoText.style.opacity = '1';
-            hitokotoFrom.style.opacity = '1';
-        }, 100);
+        // 设置错误处理
+        script.onerror = () => {
+            clearTimeout(timeoutId);
+            console.error('获取一言失败');
+            fallbackHitokoto();
+            document.body.removeChild(script);
+            delete window[callbackName];
+        };
     } catch (error) {
         console.error('获取一言失败:', error);
-        // 设置默认一言
-        document.querySelector('.hitokoto-text').textContent = '哪有什么岁月静好，不过是有人在替你负重前行。';
-        document.querySelector('.hitokoto-from').textContent = '- [网络]';
+        fallbackHitokoto();
     }
+}
+
+// 一言API失败时的备用显示
+function fallbackHitokoto() {
+    // 设置默认一言
+    document.querySelector('.hitokoto-text').textContent = '哪有什么岁月静好，不过是有人在替你负重前行。';
+    document.querySelector('.hitokoto-from').textContent = '- [网络]';
 }
 
 // 格式化日期
@@ -183,18 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 监听hash变化
     window.addEventListener('hashchange', setActiveNavItem);
 
-    // 处理留言板Giscus加载
-    if (window.location.hash === '#guestbook') {
-        // 添加小延迟确保DOM已完全渲染
-        setTimeout(() => {
-            const guestbookSection = document.getElementById('guestbook');
-            if (guestbookSection) {
-                guestbookSection.style.transform = 'translateY(0)';
-                guestbookSection.style.visibility = 'visible';
-                initGiscus();
-            }
-        }, 100);
-    }
+    // 不需要再手动初始化Giscus，已在HTML中直接嵌入
     
     // 添加页面可见性监听，节省资源
     document.addEventListener('visibilitychange', () => {
@@ -296,56 +310,6 @@ function setActiveNavItem() {
     }
     // 如果没有hash，则不设置任何活动项
 }
-
-// Giscus 评论系统加载函数
-function initGiscus() {
-    const giscusContainer = document.getElementById('giscus-container');
-    if (giscusContainer) {
-        // 检查是否已经加载
-        if (!document.querySelector('.giscus-frame')) {
-            console.log('Giscus加载中...');
-            
-            // 如果脚本已经存在但未正确加载，尝试重新加载
-            const existingScript = document.querySelector('script[src*="giscus.app/client.js"]');
-            if (existingScript) {
-                existingScript.remove();
-            }
-            
-            // 重新创建脚本
-            const giscusScript = document.createElement('script');
-            giscusScript.src = 'https://giscus.app/client.js';
-            giscusScript.setAttribute('data-repo', 'deerwan/homepage');
-            giscusScript.setAttribute('data-repo-id', 'R_kgDONnyo4Q');
-            giscusScript.setAttribute('data-category', 'Announcements');
-            giscusScript.setAttribute('data-category-id', 'DIC_kwDONnyo4c4CsCfJ');
-            giscusScript.setAttribute('data-mapping', 'pathname');
-            giscusScript.setAttribute('data-strict', '0');
-            giscusScript.setAttribute('data-reactions-enabled', '1');
-            giscusScript.setAttribute('data-emit-metadata', '0');
-            giscusScript.setAttribute('data-input-position', 'bottom');
-            giscusScript.setAttribute('data-theme', 'preferred_color_scheme');
-            giscusScript.setAttribute('data-lang', 'zh-CN');
-            giscusScript.setAttribute('data-loading', 'eager');
-            giscusScript.setAttribute('crossorigin', 'anonymous');
-            giscusScript.async = true;
-            
-            // 添加脚本到容器中
-            giscusContainer.appendChild(giscusScript);
-        }
-    }
-}
-
-// 监听hash变化，当访问留言板时加载Giscus
-window.addEventListener('hashchange', function() {
-    if (window.location.hash === '#guestbook') {
-        const guestbookSection = document.getElementById('guestbook');
-        if (guestbookSection) {
-            setTimeout(() => {
-                initGiscus();
-            }, 300);
-        }
-    }
-});
 
 document.addEventListener('click', function(e) {
   // 排除按钮、链接、输入框等交互元素
