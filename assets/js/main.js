@@ -2,7 +2,7 @@
 const CONFIG = {
     BING_WALLPAPER_URL: 'https://bing.img.run/rand.php', // 必应壁纸API
     BING_FALLBACK_URL: 'https://api.dujin.org/bing/1920.php', // 备用壁纸API
-    HITOKOTO_API: 'https://v1.hitokoto.cn?c=d&c=i&encode=json', // 一言API，添加参数和指定返回格式
+    HITOKOTO_API: 'https://v.api.aa1.cn/api/yiyan/index.php', // 新一言API
     FRIEND_LINK_API: 'https://home-push-friend-link.952780.xyz/' // 友链推送API地址
 };
 
@@ -105,55 +105,42 @@ function setBackground() {
 // 获取一言
 async function getHitokoto() {
     try {
+        // 创建一个超时控制
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 3000); // 3秒超时
         
-        // 使用JSONP方式解决跨域问题
-        const script = document.createElement('script');
-        const callbackName = 'hitokotoCallback_' + Date.now();
+        // 直接使用fetch请求新API
+        const response = await fetch(CONFIG.HITOKOTO_API, {
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
         
-        // 创建全局回调函数
-        window[callbackName] = function(data) {
-            // 清除超时
-            clearTimeout(timeoutId);
-            
-            // 更新DOM
-            const hitokotoText = document.querySelector('.hitokoto-text');
-            const hitokotoFrom = document.querySelector('.hitokoto-from');
-            
-            // 设置透明度为0
-            hitokotoText.style.opacity = '0';
-            hitokotoFrom.style.opacity = '0';
-            
-            // 更新文本内容
-            hitokotoText.textContent = data.hitokoto;
-            hitokotoFrom.textContent = `- [${data.from}]`;
-            
-            // 使用setTimeout实现淡入效果
-            setTimeout(() => {
-                hitokotoText.style.transition = 'opacity 0.8s ease';
-                hitokotoFrom.style.transition = 'opacity 0.8s ease';
-                hitokotoText.style.opacity = '1';
-                hitokotoFrom.style.opacity = '1';
-            }, 100);
-            
-            // 移除脚本标签和回调函数
-            document.body.removeChild(script);
-            delete window[callbackName];
-        };
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         
-        // 添加script标签到页面
-        script.src = `${CONFIG.HITOKOTO_API}&callback=${callbackName}`;
-        document.body.appendChild(script);
+        const text = await response.text();
         
-        // 设置错误处理
-        script.onerror = () => {
-            clearTimeout(timeoutId);
-            console.error('获取一言失败');
-            fallbackHitokoto();
-            document.body.removeChild(script);
-            delete window[callbackName];
-        };
+        // 添加淡入效果
+        const hitokotoText = document.querySelector('.hitokoto-text');
+        const hitokotoFrom = document.querySelector('.hitokoto-from');
+        
+        // 设置透明度为0
+        hitokotoText.style.opacity = '0';
+        hitokotoFrom.style.opacity = '0';
+        
+        // 更新文本内容 - 新API直接返回文本
+        hitokotoText.textContent = text.trim();
+        hitokotoFrom.textContent = '- [每日一言]';
+        
+        // 使用setTimeout实现淡入效果
+        setTimeout(() => {
+            hitokotoText.style.transition = 'opacity 0.8s ease';
+            hitokotoFrom.style.transition = 'opacity 0.8s ease';
+            hitokotoText.style.opacity = '1';
+            hitokotoFrom.style.opacity = '1';
+        }, 100);
+        
     } catch (error) {
         console.error('获取一言失败:', error);
         fallbackHitokoto();
