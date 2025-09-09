@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# 允许搜索引擎抓取所有内容
+Disallow: /assets/sounds/
+Disallow: /.git/
+
+# 站点地图
+Sitemap: https://lllh.de/sitemap.xml
+
+# 爬取延迟（可选）
+Crawl-delay: 1

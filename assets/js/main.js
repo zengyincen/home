@@ -1,20 +1,13 @@
-// 配置信息，统一管理所有API和服务端地址
+// 向后兼容版本 - 使用旧的API配置
+// 注意：这个文件仅为不支持ES6模块的浏览器提供降级支持
 const CONFIG = {
-    BING_WALLPAPER_URL: 'https://bing.img.run/rand.php', // 必应壁纸API
-    BING_FALLBACK_URL: 'https://api.dujin.org/bing/1920.php', // 备用壁纸API
-    HITOKOTO_API: 'https://v.api.aa1.cn/api/yiyan/index.php', // 新一言API
-    FRIEND_LINK_API: 'https://home-push-friend-link.952780.xyz/' // 友链推送API地址
+    BING_WALLPAPER_URL: 'https://bing.img.run/rand.php',
+    BING_FALLBACK_URL: 'https://api.dujin.org/bing/1920.php',
+    HITOKOTO_API: 'https://v1.hitokoto.cn/?c=a&c=b&c=c&c=d&c=h&c=i&c=k',
+    FRIEND_LINK_API: 'https://home-push-friend-link.952780.xyz/'
 };
 
-// 清理旧的服务工作者
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then(registrations => {
-        for (let registration of registrations) {
-            registration.unregister();
-            console.log('已注销服务工作者:', registration);
-        }
-    });
-}
+// 简化版本：不包含复杂的服务工作者管理
 
 // 性能优化：使用防抖函数
 function debounce(func, delay = 300) {
@@ -195,6 +188,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // 监听hash变化
     window.addEventListener('hashchange', setActiveNavItem);
 
+    // 初始化移动端导航
+    initMobileNavigation();
+
 
     
     // 添加窗口大小变化监听，使用防抖优化性能
@@ -287,6 +283,83 @@ function setActiveNavItem() {
         }
     }
     // 如果没有hash，则不设置任何活动项
+}
+
+// 初始化移动端导航
+function initMobileNavigation() {
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navigation = document.querySelector('.navigation');
+    let overlay = null;
+    
+    if (!menuToggle || !navigation) return;
+    
+    // 创建遮罩层
+    function createOverlay() {
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'mobile-overlay';
+            document.body.appendChild(overlay);
+            
+            // 点击遮罩关闭菜单
+            overlay.addEventListener('click', closeMobileMenu);
+        }
+    }
+    
+    // 打开移动端菜单
+    function openMobileMenu() {
+        createOverlay();
+        menuToggle.classList.add('active');
+        navigation.classList.add('mobile-open');
+        overlay.classList.add('active');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        menuToggle.setAttribute('aria-label', '关闭菜单');
+        
+        // 防止背景滚动
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // 关闭移动端菜单
+    function closeMobileMenu() {
+        menuToggle.classList.remove('active');
+        navigation.classList.remove('mobile-open');
+        if (overlay) overlay.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', '打开菜单');
+        
+        // 恢复背景滚动
+        document.body.style.overflow = '';
+    }
+    
+    // 切换菜单状态
+    function toggleMobileMenu() {
+        if (navigation.classList.contains('mobile-open')) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    }
+    
+    // 绑定事件
+    menuToggle.addEventListener('click', toggleMobileMenu);
+    
+    // 点击导航项时关闭菜单
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', closeMobileMenu);
+    });
+    
+    // ESC键关闭菜单
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navigation.classList.contains('mobile-open')) {
+            closeMobileMenu();
+        }
+    });
+    
+    // 窗口大小改变时关闭移动端菜单
+    window.addEventListener('resize', debounce(() => {
+        if (window.innerWidth > 480 && navigation.classList.contains('mobile-open')) {
+            closeMobileMenu();
+        }
+    }, 250));
 }
 
 document.addEventListener('click', function(e) {

@@ -10,23 +10,6 @@
     <meta name="robots" content="index, follow">
     <title>Deer - homepage</title>
     
-    <!-- 临时控制台清理脚本，可在调试完成后移除 -->
-    <script>
-        console.clear();
-        // 禁止缓存API请求
-        fetch = ((originalFetch) => {
-          return (...args) => {
-            const [resource, config] = args;
-            // 为API URL添加时间戳参数，避免缓存
-            if (resource && resource.includes('api')) {
-              const url = new URL(resource);
-              url.searchParams.append('_t', Date.now());
-              args[0] = url.toString();
-            }
-            return originalFetch.apply(null, args);
-          };
-        })(fetch);
-    </script>
     
     <!-- Open Graph / 社交媒体预览 -->
     <meta property="og:title" content="Deer - homepage">
@@ -41,19 +24,17 @@
     <link rel="manifest" href="/manifest.json">
     
     <!-- 资源预加载和预连接 -->
-    <link rel="preload" href="https://v.api.aa1.cn/api/yiyan/index.php" as="fetch" crossorigin>
-    <link rel="preconnect" href="https://v.api.aa1.cn">
+    <link rel="preload" href="https://v1.hitokoto.cn/?c=a" as="fetch" crossorigin>
+    <link rel="preconnect" href="https://v1.hitokoto.cn">
     <link rel="preconnect" href="https://bing.img.run">
-    <link rel="dns-prefetch" href="https://v.api.aa1.cn">
+    <link rel="dns-prefetch" href="https://v1.hitokoto.cn">
     <link rel="dns-prefetch" href="https://bing.img.run">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <link rel="preconnect" href="https://giscus.app" crossorigin>
-    
-    <!-- 关键CSS内联（实际项目中可以使用构建工具自动生成） -->
+    <!-- 关键CSS内联 -->
     <link rel="stylesheet" href="assets/css/style.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="assets/css/style.css"></noscript>
-      <!-- 异步加载字体图标 -->
+    <!-- 异步加载字体图标 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
           crossorigin="anonymous" referrerpolicy="no-referrer" 
@@ -64,35 +45,57 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" 
           media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"></noscript>
-    
-    
     <link rel="preload" href="assets/fonts/AlimamaDaoLiTi-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 </head>
 <body>
+<!-- 无障碍性：跳转到主内容 -->
+<a href="#main-content" class="skip-link">跳转到主内容</a>
+
 <div id="global-loading">
   <div class="spinner"></div>
   <div class="loading-text">正在加载...</div>
 </div>
-    <main class="container" role="main">
+    <main class="container" role="main" id="main-content">
         <div class="content">
             <header>
                 <div class="logo">
-                    <img src="assets/img/logo.png" alt="Deer Logo" width="120" height="120" loading="eager">
+                    <picture>
+                        <source srcset="assets/img/logo-optimized.png" type="image/png">
+                        <img src="assets/img/logo-optimized.png" alt="Deer Logo" width="120" height="120" loading="eager" decoding="async">
+                    </picture>
                 </div>
                 <p class="subtitle" aria-label="问候语">hi 👋,I'm Deer</p>   <!-- 𝐇𝐢 👋, 𝐈'𝐦 𝐃𝐞𝐞𝐫 -->
             </header>
                 
-            <div class="hitokoto" aria-live="polite">
-                <p class="hitokoto-text">加载中...</p>
-                <p class="hitokoto-from">- [加载中...]</p>
+            <div class="hitokoto" aria-live="polite" role="region" aria-label="每日一言">
+                <p class="hitokoto-text" aria-describedby="hitokoto-source">加载中...</p>
+                <p class="hitokoto-from" id="hitokoto-source">- [加载中...]</p>
             </div>
             
-            <nav class="navigation" aria-label="主导航">
-                <a href="https://deerwan.github.io" class="nav-item" rel="noopener" target="_blank">博客</a>
-                <a href="#navigation" class="nav-item">导航</a>
-                <a href="#guestbook" class="nav-item">留言</a>
-                <a href="#friends" class="nav-item">友链</a>
-                <a href="#about" class="nav-item">关于</a>
+            <!-- 移动端汉堡菜单按钮 -->
+            <button class="mobile-menu-toggle" aria-label="打开菜单" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <nav class="navigation" aria-label="主导航" role="navigation">
+                <a href="https://deerwan.github.io" class="nav-item" rel="noopener" target="_blank" aria-describedby="external-link-notice">
+                    博客<span class="sr-only">（在新窗口打开）</span>
+                </a>
+                <a href="#navigation" class="nav-item" aria-describedby="nav-description">导航</a>
+                <a href="#guestbook" class="nav-item" aria-describedby="guestbook-description">留言</a>
+                <a href="#friends" class="nav-item" aria-describedby="friends-description">友链</a>
+                <a href="#about" class="nav-item" aria-describedby="about-description">关于</a>
+                
+                <!-- 屏幕阅读器说明 -->
+                <div class="sr-only">
+                    <span id="external-link-notice">外部链接，将在新窗口打开</span>
+                    <span id="nav-description">个人导航页面</span>
+                    <span id="guestbook-description">留言板页面</span>
+                    <span id="friends-description">友情链接页面</span>
+                    <span id="about-description">个人简介页面</span>
+                </div>
             </nav>
         </div>
     </main>
@@ -104,7 +107,10 @@
             <h2 class="section-title">关于我</h2>
             <div class="about-content">
                 <div class="about-avatar">
-                    <img src="assets/img/logo.png" alt="个人头像" width="200" height="200" loading="lazy">
+                    <picture>
+                        <source srcset="assets/img/logo-optimized.png" type="image/png">
+                        <img src="assets/img/logo-optimized.png" alt="个人头像" width="200" height="200" loading="lazy" decoding="async">
+                    </picture>
                     <div class="social-links about-social">
                         <a href="https://github.com/deerwan" target="_blank" rel="noopener" aria-label="GitHub主页">
                             <i class="fab fa-github" aria-hidden="true"></i>
@@ -195,15 +201,7 @@
             </div>
           </a>
           
-          <!-- 友链模板：复制以下结构添加新友链 -->
-          <a class="friend-item" href="https://linux.do/" target="_blank" rel="noopener">
-            <img src="https://www.faviconextractor.com/favicon/linux.do" alt="站点名称" width="48" height="48" class="avatar-round">
-            <div>
-              <div class="friend-name">LINUX DO</div>
-              <div class="friend-desc">新的理想型社区</div>
-            </div>
-          </a>
-          <!-- 可继续添加更多友链 -->
+          <!-- 更多友链可以在这里添加 -->
 
 
         </div>
@@ -429,8 +427,11 @@
         </div>
     </footer>
 
-    <!-- 主脚本延迟加载 -->
-    <script src="assets/js/main.js" defer></script>
+    <!-- 模块化主脚本 -->
+    <script type="module" src="assets/js/app.js"></script>
+    
+    <!-- 降级支持：非ES6模块浏览器使用原始脚本 -->
+    <script nomodule src="assets/js/main.js" defer></script>
     
     <!-- 结构化数据 -->
     <script type="application/ld+json">
