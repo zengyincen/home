@@ -300,8 +300,8 @@ function initMobileNavigation() {
             overlay.className = 'mobile-overlay';
             document.body.appendChild(overlay);
             
-            // 点击遮罩关闭菜单
-            overlay.addEventListener('click', closeMobileMenu);
+            // 移除点击遮罩关闭菜单的功能
+            // overlay.addEventListener('click', closeMobileMenu);
         }
     }
     
@@ -344,7 +344,11 @@ function initMobileNavigation() {
     
     // 点击导航项时关闭菜单
     document.querySelectorAll('.nav-item').forEach(item => {
-        item.addEventListener('click', closeMobileMenu);
+        item.addEventListener('click', (e) => {
+            // 先关闭菜单
+            closeMobileMenu();
+            // 不阻止默认行为，让链接正常跳转
+        });
     });
     
     // ESC键关闭菜单

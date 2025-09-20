@@ -643,6 +643,7 @@ body::before {
         visibility: hidden;
         transition: all 0.3s ease;
         z-index: 998;
+        pointer-events: none; /* 确保遮罩层不阻止点击事件 */
     }
     
     .mobile-overlay.active {

@@ -112,7 +112,8 @@ class UIManager {
                 this.overlay = document.createElement('div');
                 this.overlay.className = 'mobile-overlay';
                 document.body.appendChild(this.overlay);
-                on(this.overlay, 'click', () => this.closeMobileMenu());
+                // 移除点击遮罩层关闭菜单的功能
+                // on(this.overlay, 'click', () => this.closeMobileMenu());
             }
         };
 
@@ -153,7 +154,11 @@ class UIManager {
         
         // 点击导航项时关闭菜单
         $$('.nav-item').forEach(item => {
-            on(item, 'click', () => this.closeMobileMenu());
+            on(item, 'click', (e) => {
+                // 先关闭菜单
+                this.closeMobileMenu();
+                // 不阻止默认行为，让链接正常跳转
+            });
         });
 
         // ESC键关闭菜单
