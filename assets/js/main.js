@@ -208,6 +208,37 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 500);
     }, 300); // 可根据实际情况调整延迟
 
+    // 友链申请表单折叠/展开功能
+    var friendSubmitToggle = document.getElementById('friend-submit-toggle');
+    var friendSubmitForm = document.getElementById('friend-submit-form');
+    var toggleBtn = friendSubmitToggle ? friendSubmitToggle.querySelector('.toggle-btn') : null;
+    
+    if (friendSubmitToggle && friendSubmitForm && toggleBtn) {
+        friendSubmitToggle.addEventListener('click', function() {
+            // 切换显示状态
+            var isShowing = friendSubmitForm.classList.contains('show');
+            
+            if (isShowing) {
+                // 折叠
+                friendSubmitForm.classList.remove('show');
+                friendSubmitForm.style.display = 'none';
+                toggleBtn.classList.remove('active');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                toggleBtn.setAttribute('aria-label', '展开友链申请表单');
+            } else {
+                // 展开
+                friendSubmitForm.style.display = 'block';
+                // 使用setTimeout确保display:block生效后再添加show类
+                setTimeout(function() {
+                    friendSubmitForm.classList.add('show');
+                }, 10);
+                toggleBtn.classList.add('active');
+                toggleBtn.setAttribute('aria-expanded', 'true');
+                toggleBtn.setAttribute('aria-label', '收起友链申请表单');
+            }
+        });
+    }
+
     // 友链表单提交处理
     var form = document.getElementById('friend-link-form');
     if(form) {

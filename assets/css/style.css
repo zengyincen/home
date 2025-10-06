@@ -575,6 +575,16 @@ body::before {
     /* 显示移动端汉堡菜单 */
     .mobile-menu-toggle {
         display: flex;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1001;
+        margin: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 8px;
+        padding: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
     
     /* 移动端导航样式 */
@@ -584,8 +594,9 @@ body::before {
         right: -100%;
         width: 280px;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(20px);
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -608,13 +619,16 @@ body::before {
         text-align: center;
         font-size: 1.1rem;
         border-radius: 12px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
     
     .nav-item:hover {
-        background: rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.35);
         transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
     
     /* 调整移动端间距 */
@@ -638,7 +652,7 @@ body::before {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.4);
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
@@ -861,10 +875,61 @@ body.keyboard-navigation button:focus {
 }
 .friend-submit h3 {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   color: var(--primary-color);
   font-size: 1.15rem;
   font-weight: 500;
+}
+.friend-submit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-bottom: 0.5rem;
+  transition: all var(--transition-fast);
+  border-radius: 6px;
+}
+.friend-submit-header:hover {
+  background: rgba(255, 255, 255, 0.05);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.toggle-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+.toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+.toggle-btn i {
+  transition: transform var(--transition-normal);
+}
+.toggle-btn.active i {
+  transform: rotate(180deg);
+}
+.friend-submit-form {
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+}
+.friend-submit-form.show {
+  max-height: 800px;
+  opacity: 1;
+  margin-top: 1rem;
 }
 #friend-link-form {
   display: flex;

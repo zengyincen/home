@@ -227,6 +227,37 @@ class UIManager {
      * @private
      */
     _initFormHandlers() {
+        // 友链申请表单折叠/展开功能
+        const friendSubmitToggle = $('#friend-submit-toggle');
+        const friendSubmitForm = $('#friend-submit-form');
+        const toggleBtn = friendSubmitToggle ? friendSubmitToggle.querySelector('.toggle-btn') : null;
+        
+        if (friendSubmitToggle && friendSubmitForm && toggleBtn) {
+            on(friendSubmitToggle, 'click', () => {
+                // 切换显示状态
+                const isShowing = friendSubmitForm.classList.contains('show');
+                
+                if (isShowing) {
+                    // 折叠
+                    friendSubmitForm.classList.remove('show');
+                    friendSubmitForm.style.display = 'none';
+                    toggleBtn.classList.remove('active');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                    toggleBtn.setAttribute('aria-label', '展开友链申请表单');
+                } else {
+                    // 展开
+                    friendSubmitForm.style.display = 'block';
+                    // 使用setTimeout确保display:block生效后再添加show类
+                    setTimeout(() => {
+                        friendSubmitForm.classList.add('show');
+                    }, 10);
+                    toggleBtn.classList.add('active');
+                    toggleBtn.setAttribute('aria-expanded', 'true');
+                    toggleBtn.setAttribute('aria-label', '收起友链申请表单');
+                }
+            });
+        }
+
         const form = $('#friend-link-form');
         const result = $('#friend-link-result');
         

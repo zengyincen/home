@@ -158,11 +158,6 @@
             <a href="#" class="back-btn" id="back-btn-guestbook"><i class="fas fa-arrow-left" aria-hidden="true"></i> <span>返回</span></a>
             <h2 class="section-title">留言板</h2>
             
-            <div class="guestbook-intro">
-                <p>欢迎在这里留下您的想法、建议或问候！</p>
-                <p class="guestbook-notice">基于GitHub Discussions的评论系统，需要GitHub账号登录后才能评论。</p>
-            </div>
-            
             <!-- Giscus 评论容器 - 修改为直接嵌入版本，解决跨域问题 -->
             <div id="giscus-container" class="giscus-container">
                 <script src="https://giscus.app/client.js"
@@ -201,29 +196,108 @@
             </div>
           </a>
           
+          <a class="friend-item" href="https://v2ex.com/" target="_blank" rel="noopener">
+            <img src="https://www.faviconextractor.com/favicon/v2ex.com" alt="V2EX" width="48" height="48" class="avatar-round">
+            <div>
+              <div class="friend-name">V2EX</div>
+              <div class="friend-desc">创意工作者们的社区</div>
+            </div>
+          </a>
+          
+          <a class="friend-item" href="https://segmentfault.com/" target="_blank" rel="noopener">
+            <img src="https://www.faviconextractor.com/favicon/segmentfault.com" alt="SegmentFault" width="48" height="48" class="avatar-round">
+            <div>
+              <div class="friend-name">SegmentFault 思否</div>
+              <div class="friend-desc">中文技术问答社区</div>
+            </div>
+          </a>
+          
+          <a class="friend-item" href="https://juejin.cn/" target="_blank" rel="noopener">
+            <img src="https://www.faviconextractor.com/favicon/juejin.cn" alt="掘金" width="48" height="48" class="avatar-round">
+            <div>
+              <div class="friend-name">掘金</div>
+              <div class="friend-desc">开发者技术社区</div>
+            </div>
+          </a>
+          
+          <a class="friend-item" href="https://stackoverflow.com/" target="_blank" rel="noopener">
+            <img src="https://www.faviconextractor.com/favicon/stackoverflow.com" alt="Stack Overflow" width="48" height="48" class="avatar-round">
+            <div>
+              <div class="friend-name">Stack Overflow</div>
+              <div class="friend-desc">全球程序员问答社区</div>
+            </div>
+          </a>
+          
+          <a class="friend-item" href="https://www.zhihu.com/" target="_blank" rel="noopener">
+            <img src="https://www.faviconextractor.com/favicon/zhihu.com" alt="知乎" width="48" height="48" class="avatar-round">
+            <div>
+              <div class="friend-name">知乎</div>
+              <div class="friend-desc">中文问答社区</div>
+            </div>
+          </a>
+          
+          <a class="friend-item" href="https://sspai.com/" target="_blank" rel="noopener">
+            <img src="https://www.faviconextractor.com/favicon/sspai.com" alt="少数派" width="48" height="48" class="avatar-round">
+            <div>
+              <div class="friend-name">少数派</div>
+              <div class="friend-desc">高质量数字生活指南</div>
+            </div>
+          </a>
+          
+          <a class="friend-item" href="https://www.reddit.com/r/programming/" target="_blank" rel="noopener">
+            <img src="https://www.faviconextractor.com/favicon/reddit.com" alt="Reddit Programming" width="48" height="48" class="avatar-round">
+            <div>
+              <div class="friend-name">Reddit Programming</div>
+              <div class="friend-desc">编程话题讨论社区</div>
+            </div>
+          </a>
+          
+          <a class="friend-item" href="https://news.ycombinator.com/" target="_blank" rel="noopener">
+            <img src="https://www.faviconextractor.com/favicon/news.ycombinator.com" alt="Hacker News" width="48" height="48" class="avatar-round">
+            <div>
+              <div class="friend-name">Hacker News</div>
+              <div class="friend-desc">科技新闻与讨论</div>
+            </div>
+          </a>
+          
+          <a class="friend-item" href="https://dev.to/" target="_blank" rel="noopener">
+            <img src="https://www.faviconextractor.com/favicon/dev.to" alt="DEV Community" width="48" height="48" class="avatar-round">
+            <div>
+              <div class="friend-name">DEV Community</div>
+              <div class="friend-desc">开发者写作平台</div>
+            </div>
+          </a>
+          
           <!-- 更多友链可以在这里添加 -->
 
 
         </div>
         <!-- 友链提交入口 -->
         <div class="friend-submit mt-2">
-          <h3>申请友链</h3>
-          <form id="friend-link-form">
-            <input type="text" name="name" placeholder="您的网站名称" required class="mb-05">
-            <input type="url" name="url" placeholder="您的网站链接" required class="mb-05">
-            <input type="url" name="logo" placeholder="Logo图片链接（可选）" class="mb-05">
-            <textarea name="desc" placeholder="网站描述（可选）" rows="2" class="mb-05"></textarea>
-            <div class="mb-05" style="text-align:left; color:#fff;">
-              <label style="margin-right:1.5rem;">
-                <input type="radio" name="pushType" value="telegram" required> Telegram
-              </label>
-              <label>
-                <input type="radio" name="pushType" value="feishu" required> 飞书
-              </label>
-            </div>
-            <button type="submit">提交申请</button>
-          </form>
-          <div id="friend-link-result" class="friend-result"></div>
+          <div class="friend-submit-header" id="friend-submit-toggle">
+            <h3>申请友链</h3>
+            <button class="toggle-btn" aria-expanded="false" aria-label="展开友链申请表单">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+          <div class="friend-submit-form" id="friend-submit-form" style="display: none;">
+            <form id="friend-link-form">
+              <input type="text" name="name" placeholder="您的网站名称" required class="mb-05">
+              <input type="url" name="url" placeholder="您的网站链接" required class="mb-05">
+              <input type="url" name="logo" placeholder="Logo图片链接（可选）" class="mb-05">
+              <textarea name="desc" placeholder="网站描述（可选）" rows="2" class="mb-05"></textarea>
+              <div class="mb-05" style="text-align:left; color:#fff;">
+                <label style="margin-right:1.5rem;">
+                  <input type="radio" name="pushType" value="telegram" required> Telegram
+                </label>
+                <label>
+                  <input type="radio" name="pushType" value="feishu" required> 飞书
+                </label>
+              </div>
+              <button type="submit">提交申请</button>
+            </form>
+            <div id="friend-link-result" class="friend-result"></div>
+          </div>
         </div>
         </div>
     </section>
